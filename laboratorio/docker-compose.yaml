@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  load-balance:
+    image: nginx
+    ports:
+      - 80:80
+      - 443:443  
+    volumes:
+      - ./load-balance.conf:/etc/nginx/nginx.conf
+      - ./certificado.crt:/etc/nginx/certificado.crt
+      - ./chave-privada.key:/etc/nginx/chave-privada.key
+    
+
+
+
+
