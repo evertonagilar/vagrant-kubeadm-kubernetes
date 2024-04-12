@@ -1,31 +1,11 @@
 
 # Vagrantfile and Scripts to Automate Kubernetes Setup using Kubeadm [Practice Environment for CKA/CKAD and CKS Exams]
 
+Based on original work: techiescamp/vagrant-kubeadm-kubernetes
+
 A fully automated setup for CKA, CKAD, and CKS practice labs is tested on the following systems:
 
-- Windows
-- Ubuntu Desktop
-- Mac Intel-based systems
-
-If you are MAC Silicon user, Please use the follwing repo.
-
-- [Vagrant Kubeadm Setup on MAC Silicon](https://github.com/techiescamp/vagrant-kubeadm-mac-silicon)
-
-## CKA, CKAD, CKS, or KCNA Vouchers Codes
-
-As part of our commitment to helping the DevOps community save money on Kubernetes Certifications, we continuously update the latest voucher codes from the Linux Foundation
-
-🚀  CKA, CKAD, CKS, or KCNA exam aspirants can **save $100** today using code **EARTHDAY24COM** at https://kube.promo/devops. It is a limited-time offer from the Linux Foundation.
-
-The following are the best bundles to **save up to $419** with code **EARTHDAY24COM**
-
-- CKA + CKAD + CKS Exam bundle ($419 Savings): [kube.promo/k8s-bundle](https://kube.promo/k8s-bundle)
-- CKA + CKS Bundle ($283 Savings) [kube.promo/bundle](https://kube.promo/bundle)
-- KCNA + CKA ( $229 Savings) [kube.promo/kcka-bundle](https://kube.promo/kcna-cka)
-- KCSA + CKS Exam Bundle ($229 Savings) [kube.promo/kcsa-cks](https://kube.promo/kcsa-cks)
-- KCNA + KCSA Exam Bundle ($203 Savings) [kube.promo/kcna-kcsa](https://kube.promo/kcna-kcsa)
-
->Note: You have one year of validity to appear for the certification exam after registration
+- Ubuntu 22.04 and Debian 12
 
 ## Setup Prerequisites
 
