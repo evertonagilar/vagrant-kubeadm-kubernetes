@@ -58,6 +58,20 @@ curl -fsSL https://pkgs.k8s.io/addons:/cri-o:/prerelease:/main/deb/Release.key |
 echo "deb [signed-by=/etc/apt/keyrings/cri-o-apt-keyring.gpg] https://pkgs.k8s.io/addons:/cri-o:/prerelease:/main/deb/ /" |
     tee /etc/apt/sources.list.d/cri-o.list
 
+echo "Apply sysctl params without reboot"
+sudo sysctl --system
+
+echo "Install CRIO Runtime"
+
+sudo apt-get update -y
+apt-get install -y software-properties-common curl apt-transport-https ca-certificates
+
+curl -fsSL https://pkgs.k8s.io/addons:/cri-o:/prerelease:/main/deb/Release.key |
+    gpg --dearmor -o /etc/apt/keyrings/cri-o-apt-keyring.gpg
+echo "deb [signed-by=/etc/apt/keyrings/cri-o-apt-keyring.gpg] https://pkgs.k8s.io/addons:/cri-o:/prerelease:/main/deb/ /" |
+    tee /etc/apt/sources.list.d/cri-o.list
+
+>>>>>>> 902a144b1ce6433fa5804e984244dcdc060deffe
 sudo apt-get update -y
 sudo apt-get install -y cri-o
 
@@ -70,8 +84,13 @@ echo "CRI runtime installed successfully"
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v$KUBERNETES_VERSION_SHORT/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v$KUBERNETES_VERSION_SHORT/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+<<<<<<< HEAD
 
 echo "Install Kubernetes tools..."
+=======
+
+
+>>>>>>> 902a144b1ce6433fa5804e984244dcdc060deffe
 sudo apt-get update -y
 sudo apt-get install -y kubelet="$KUBERNETES_VERSION" kubectl="$KUBERNETES_VERSION" kubeadm="$KUBERNETES_VERSION"
 sudo apt-get update -y
@@ -81,6 +100,11 @@ echo "Disable auto-update kubernetes tools"
 sudo apt-mark hold kubelet kubectl kubeadm cri-o
 
 echo "Configure KUBELET_EXTRA_ARGS parameter"
+
+echo "Disable auto-update services"
+sudo apt-mark hold kubelet kubectl kubeadm cri-o
+
+echo "Configure KUBELET_EXTRA_ARGS"
 local_ip="$(ip --json a s | jq -r '.[] | if .ifname == "eth1" then .addr_info[] | if .family == "inet" then .local else empty end else empty end')"
 cat > /etc/default/kubelet << EOF
 KUBELET_EXTRA_ARGS=--node-ip=$local_ip
