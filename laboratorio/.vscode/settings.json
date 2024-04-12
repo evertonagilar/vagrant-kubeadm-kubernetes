@@ -1,5 +1,0 @@
-{
-    "yaml.schemas": {
-        "kubernetes://schema/networking.k8s.io/v1@ingress": "file:///home/evertonagilar/lab/sistemas-cad-ingress.yaml"
-    }
-}
